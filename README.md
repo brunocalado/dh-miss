@@ -25,6 +25,12 @@ You can choose from various personas and stances. The AI can motivate or critici
 
 <p align="center"><img width="900" src="docs/preview.webp"></p>
 
+# WARNINGS
+
+*   **Configuration:** You **MUST** read **[How to Configure the AI](how-to-ia.md)** before using this module.
+*   **Spoilers:** The AI reads data from characters and adversaries (including hidden details) to generate responses, which may reveal spoilers.
+*   **Content Safety:** Players can inject prompts that may generate undesired content.
+
 # Custom AI Notes
 
 You can add custom prompts in a adversary by adding to "Notes" something like this:
@@ -44,12 +50,6 @@ Maximum: 600 characters
 ## Accepted Tags
 
 `$NOPERSONA`: will not send the default persona. 
-
-# WARNINGS
-
-*   **Configuration:** You **MUST** read **[How to Configure the AI](how-to-ia.md)** before using this module.
-*   **Data Privacy:** The AI will have access to information like HP, Stress, and other details you may not want to share.
-*   **Content Safety:** Players can inject prompts that may generate undesired content.
 
 # 🚀 Installation
 
