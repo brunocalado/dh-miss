@@ -27,7 +27,7 @@ You can choose from various personas and stances. The AI can motivate or critici
 
 # WARNINGS
 
-*   **Configuration:** You **MUST** read **[How to Configure the AI](how-to-ia.md)** before using this module.
+*   **Configuration:** You **MUST** read **[How to Configure the AI](https://github.com/brunocalado/dh-miss/wiki/How-to-Configure-the-AI-(Free-Tier))** before using this module.
 *   **Spoilers:** The AI reads data from characters and adversaries (including hidden details) to generate responses, which may reveal spoilers.
 *   **Content Safety:** Players can inject prompts that may generate undesired content.
 
