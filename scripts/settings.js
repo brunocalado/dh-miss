@@ -285,15 +285,6 @@ class AIProvidersApp extends HandlebarsApplicationMixin(ApplicationV2) {
  * Called from the init hook in main.js.
  */
 export function registerSettings() {
-    // --- Debug Settings ---
-    game.settings.register(MODULE_ID, "debugmode", {
-        name: "Enable Debug Mode",
-        hint: "Prints roll detection and AI payload info to browser console (F12).",
-        scope: "world",
-        config: true,
-        type: Boolean,
-        default: false
-    });
 
     // --- AI Avatar Settings ---
     game.settings.register(MODULE_ID, "aiAvatarImage", {
@@ -304,6 +295,16 @@ export function registerSettings() {
         type: String,
         default: `modules/${MODULE_ID}/assets/images/avatar-white-border.webp`,
         filePicker: "image"
+    });
+    
+    // --- Debug Settings ---
+    game.settings.register(MODULE_ID, "debugmode", {
+        name: "Enable Debug Mode",
+        hint: "Prints roll detection and AI payload info to browser console (F12).",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: false
     });
 
     // --- AI Persona Settings (managed via AI Settings menu) ---
