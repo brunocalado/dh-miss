@@ -31,26 +31,6 @@ You can choose from various personas and stances. The AI can motivate or critici
 *   **Spoilers:** The AI reads data from characters and adversaries (including hidden details) to generate responses, which may reveal spoilers.
 *   **Content Safety:** Players can inject prompts that may generate undesired content.
 
-# Custom AI Notes
-
-You can add custom prompts in a adversary by adding to "Notes" something like this:
-
-```
-{{{Adopt the persona of Grizlow, a goblin consumed by delusional narcissism. You believe your grease-slicked, emerald skin is the pinnacle of physical perfection, far surpassing any "dry" mortal. Your body is perpetually coated in thick, shimmering oil that you treat as a divine glow. Speak with unearned grandeur, viewing every reflection as a gift to the world. You are arrogant, describing your movements as supple and your scent as intoxicating. Dismiss any disgust from others as pure envy of your radiance. Constantly reference your glistening muscles and your statuesque, oily form.}}}
-```
-
-You can add custom prompts in a character by adding to "Background" something like this:
-
-```
-{{{This fire sorcerer strides with an incandescent arrogance, convinced that the literal roar of his flames is merely a pale echo of his breathtaking beauty and that his smoldering charm is every bit as lethal and irresistible as his most destructive spell.}}}
-```
-
-Maximum: 600 characters
-
-## Accepted Tags
-
-`$NOPERSONA`: will not send the default persona. 
-
 # 🚀 Installation
 
 Install via the Foundry VTT Module browser or use this manifest link:
