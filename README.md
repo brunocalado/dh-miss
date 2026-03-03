@@ -47,9 +47,9 @@ Maximum: 600 characters
 
 # WARNINGS
 
-The AI will have access to information like HP, Stress, and other details you may not want to share.
-The players can inject prompts that may generate undesired content.
-You must read this before using this module.
+*   **Configuration:** You **MUST** read **[How to Configure the AI](how-to-ia.md)** before using this module.
+*   **Data Privacy:** The AI will have access to information like HP, Stress, and other details you may not want to share.
+*   **Content Safety:** Players can inject prompts that may generate undesired content.
 
 # 🚀 Installation
 
