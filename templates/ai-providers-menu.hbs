@@ -1,0 +1,95 @@
+<div class="ai-settings-wrapper" style="background: #191919; color: #e0e0e0; height: 100%;">
+
+    <!-- NAVIGATION TABS -->
+    <nav class="tracker-nav tabs">
+        <a class="item active" data-tab="gemini"><i class="fas fa-microchip"></i> Gemini</a>
+        <a class="item" data-tab="openrouter"><i class="fas fa-route"></i> OpenRouter</a>
+    </nav>
+
+    <!-- TAB CONTENT CONTAINER -->
+    <section class="tab-content">
+
+        <!-- =======================
+             TAB: GEMINI
+             ======================= -->
+        <div class="tab active" data-tab="gemini">
+            <div class="config-card">
+                <h3><i class="fas fa-key"></i> API Key</h3>
+                <div class="form-group">
+                    <label>Gemini API Key</label>
+                    <input type="password" name="geminiApiKey" value="{{geminiApiKey}}" placeholder="Paste your Gemini API key here...">
+                    <span class="hint">
+                        Free API key from <strong>aistudio.google.com/app/apikey</strong>. This key gives direct access to Google's Gemini models without any intermediary.
+                    </span>
+                </div>
+            </div>
+
+            <div class="config-card">
+                <h3><i class="fas fa-list"></i> Models</h3>
+                <span class="hint" style="margin-bottom: 10px; display: block;">
+                    Models the module will try in order. The system uses reputation and cooldown data to prioritize models that succeed most often. Remove models you don't want and add custom model IDs below.
+                </span>
+
+                <div class="model-list" data-provider="gemini">
+                    {{#each geminiModels}}
+                    <div class="model-row" data-model-id="{{this.id}}">
+                        <span class="model-label">{{this.label}}</span>
+                        <span class="model-id">{{this.id}}</span>
+                        <button type="button" class="model-delete" title="Remove Model"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="model-add-row">
+                    <input type="text" class="model-add-input" data-provider="gemini" placeholder="Model ID (e.g. gemini-2.5-flash)">
+                    <button type="button" class="model-add-btn" data-provider="gemini"><i class="fas fa-plus"></i> Add</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =======================
+             TAB: OPENROUTER
+             ======================= -->
+        <div class="tab" data-tab="openrouter">
+            <div class="config-card">
+                <h3><i class="fas fa-key"></i> API Key</h3>
+                <div class="form-group">
+                    <label>OpenRouter API Key</label>
+                    <input type="password" name="openRouterApiKey" value="{{openRouterApiKey}}" placeholder="Paste your OpenRouter API key here...">
+                    <span class="hint">
+                        Key from <strong>openrouter.ai</strong>. Provides access to models from multiple providers (GPT-4o, Claude, DeepSeek, etc). Some models are free, others require credits on your OpenRouter account.
+                    </span>
+                </div>
+            </div>
+
+            <div class="config-card">
+                <h3><i class="fas fa-list"></i> Models</h3>
+                <span class="hint" style="margin-bottom: 10px; display: block;">
+                    Models the module will try in order via OpenRouter. The system uses reputation and cooldown data to prioritize models that succeed most often. Remove models you don't want and add custom model IDs below.
+                </span>
+
+                <div class="model-list" data-provider="openrouter">
+                    {{#each openRouterModels}}
+                    <div class="model-row" data-model-id="{{this.id}}">
+                        <span class="model-label">{{this.label}}</span>
+                        <span class="model-id">{{this.id}}</span>
+                        <button type="button" class="model-delete" title="Remove Model"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="model-add-row">
+                    <input type="text" class="model-add-input" data-provider="openrouter" placeholder="Model ID (e.g. google/gemini-2.0-flash-001)">
+                    <button type="button" class="model-add-btn" data-provider="openrouter"><i class="fas fa-plus"></i> Add</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="sheet-footer flexrow">
+        <button type="submit" name="submit">
+            <i class="far fa-save"></i> Save Configuration
+        </button>
+    </footer>
+</div>

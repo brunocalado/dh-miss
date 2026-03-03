@@ -1,0 +1,248 @@
+<div class="ai-settings-wrapper" style="background: #191919; color: #e0e0e0; height: 100%;">
+
+    <!-- NAVIGATION TABS -->
+    <nav class="tracker-nav tabs">
+        <a class="item active" data-tab="general"><i class="fas fa-sliders-h"></i> General</a>
+        <a class="item" data-tab="persona"><i class="fas fa-theater-masks"></i> Persona</a>
+        <a class="item" data-tab="common"><i class="fas fa-scroll"></i> Common Rules</a>
+        <a class="item" data-tab="adversary"><i class="fas fa-dragon"></i> Adversary Rules</a>
+        <a class="item" data-tab="character"><i class="fas fa-user"></i> User Rules</a>
+    </nav>
+
+    <!-- TAB CONTENT CONTAINER -->
+    <section class="tab-content">
+
+        <!-- =======================
+             TAB: GENERAL
+             ======================= -->
+        <div class="tab active" data-tab="general">
+            <div class="config-card">
+                <h3><i class="fas fa-robot"></i> AI Behavior</h3>
+
+                <!-- Response Length Control -->
+                <div class="form-group">
+                    <label>Response Length</label>
+                    <select name="aiLengthLevel">
+                        <option value="short" {{#if (eq aiLengthLevel "short")}}selected{{/if}}>Short (40 words max, 2 sentences)</option>
+                        <option value="medium" {{#if (eq aiLengthLevel "medium")}}selected{{/if}}>Medium (60 words max, 3 sentences) — Default</option>
+                        <option value="long" {{#if (eq aiLengthLevel "long")}}selected{{/if}}>Long (100 words max, 4 sentences)</option>
+                        <option value="none" {{#if (eq aiLengthLevel "none")}}selected{{/if}}>None (no length restriction)</option>
+                    </select>
+                    <span class="hint">
+                        Controls the length directive sent to the AI. <strong>Medium</strong> is the recommended default for paced, dramatic responses.
+                    </span>
+                </div>
+
+                <!-- Activation Chance Control -->
+                <div class="form-group">
+                    <label>Activation Chance</label>
+                    <select name="aiActivationChance">
+                        <option value="10" {{#if (eq aiActivationChance "10")}}selected{{/if}}>10%</option>
+                        <option value="25" {{#if (eq aiActivationChance "25")}}selected{{/if}}>25%</option>
+                        <option value="50" {{#if (eq aiActivationChance "50")}}selected{{/if}}>50%</option>
+                        <option value="75" {{#if (eq aiActivationChance "75")}}selected{{/if}}>75%</option>
+                        <option value="100" {{#if (eq aiActivationChance "100")}}selected{{/if}}>100% — Default</option>
+                    </select>
+                    <span class="hint">
+                        Probability that the AI will comment on each roll. At <strong>100%</strong> the AI always responds. Lower values make it comment less frequently.
+                    </span>
+                </div>
+
+                <div class="form-group custom-toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="aiEnablePlayerActions" {{checked aiEnablePlayerActions}}>
+                        <span class="slider"></span>
+                        <span class="toggle-label">Player Action Outcomes</span>
+                    </label>
+                    <span class="hint">
+                        <strong>ON:</strong> AI comments on player action rolls.<br>
+                        <strong>OFF:</strong> AI silent for Action Success/Failure with Hope/Fear, Action Critical.
+                    </span>
+                </div>
+
+                <div class="form-group custom-toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="aiEnablePlayerAttacks" {{checked aiEnablePlayerAttacks}}>
+                        <span class="slider"></span>
+                        <span class="toggle-label">Player Attack Outcomes</span>
+                    </label>
+                    <span class="hint">
+                        <strong>ON:</strong> AI comments on player attack rolls.<br>
+                        <strong>OFF:</strong> AI silent for Attack Hit/Miss with Hope/Fear, Attack Critical.
+                    </span>
+                </div>
+
+                <div class="form-group custom-toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="aiEnablePlayerReactions" {{checked aiEnablePlayerReactions}}>
+                        <span class="slider"></span>
+                        <span class="toggle-label">Player Reaction Outcomes</span>
+                    </label>
+                    <span class="hint">
+                        <strong>ON:</strong> AI comments on player reaction rolls.<br>
+                        <strong>OFF:</strong> AI silent for Reaction Success, Reaction Failure, Reaction Critical.
+                    </span>
+                </div>
+
+                <div class="form-group custom-toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="aiEnableGMAttacks" {{checked aiEnableGMAttacks}}>
+                        <span class="slider"></span>
+                        <span class="toggle-label">GM Attack Outcomes</span>
+                    </label>
+                    <span class="hint">
+                        <strong>ON:</strong> AI comments on GM (adversary) attack rolls.<br>
+                        <strong>OFF:</strong> AI silent for GM Attack Success, Failure, Critical.
+                    </span>
+                </div>
+
+                <div class="form-group custom-toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="aiEnableGMReactions" {{checked aiEnableGMReactions}}>
+                        <span class="slider"></span>
+                        <span class="toggle-label">GM Reaction Outcomes</span>
+                    </label>
+                    <span class="hint">
+                        <strong>ON:</strong> AI comments on GM (adversary) reaction rolls.<br>
+                        <strong>OFF:</strong> AI silent for GM Reaction Success, Failure, Critical.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =======================
+             TAB: PERSONA
+             ======================= -->
+        <div class="tab" data-tab="persona">
+            <div class="config-card">
+                <h3><i class="fas fa-theater-masks"></i> AI Persona</h3>
+
+                <div class="form-group">
+                    <label>Persona</label>
+                    <select name="aiPersona">
+                        {{#each personaChoices}}
+                        <option value="{{this.value}}" {{#if (eq this.value ../selectedPersona)}}selected{{/if}}>{{this.label}}</option>
+                        {{/each}}
+                        <option value="custom" {{#if (eq selectedPersona "custom")}}selected{{/if}}>Custom</option>
+                    </select>
+                    <span class="hint">Select the personality of the AI commentator. Choose "Custom" to write your own prompt.</span>
+                </div>
+
+                <div class="form-group custom-persona-container">
+                    <label>Custom Persona Prompt</label>
+                    <textarea name="aiCustomPersona" rows="8" maxlength="1200" placeholder="Write your custom AI persona prompt here...">{{aiCustomPersona}}</textarea>
+                    <span class="hint">Describe the voice and identity of the AI (accent, slang, personality). Focus on how it speaks, not whose side it takes.</span>
+                </div>
+            </div>
+
+            <div class="config-card">
+                <h3><i class="fas fa-handshake-angle"></i> AI Stance</h3>
+
+                <div class="form-group">
+                    <label>Stance</label>
+                    <select name="aiStance">
+                        {{#each stanceChoices}}
+                        <option value="{{this.value}}" {{#if (eq this.value ../selectedStance)}}selected{{/if}}>{{this.label}}</option>
+                        {{/each}}
+                        <option value="custom" {{#if (eq selectedStance "custom")}}selected{{/if}}>Custom</option>
+                    </select>
+                    <span class="hint">Select whose side the AI takes. This controls how it reacts to Player Character and Adversary outcomes.</span>
+                </div>
+
+                <div class="form-group custom-stance-container">
+                    <label>Custom Stance Prompt</label>
+                    <textarea name="aiCustomStance" rows="8" maxlength="1200" placeholder="Describe how the AI should react to PC successes/failures and Adversary successes/failures...">{{aiCustomStance}}</textarea>
+                    <span class="hint">Define the AI's allegiance. Specify behavior for: PC success, PC failure, Adversary success, Adversary failure.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =======================
+             TAB: COMMON RULES
+             ======================= -->
+        <div class="tab" data-tab="common">
+            <div class="config-card">
+                <h3><i class="fas fa-globe"></i> Common Rules</h3>
+                <span class="hint" style="margin-bottom: 10px; display: block;">
+                    Rules that are always sent to the AI for every roll, regardless of who is rolling.
+                </span>
+
+                <div class="rules-list" data-rule-type="common">
+                    {{#each commonRules}}
+                    <div class="rule-row" data-rule-id="{{this.id}}">
+                        <input type="text" class="rule-text" name="ruleText" value="{{this.text}}" maxlength="1200" placeholder="Describe a rule for the AI...">
+                        <button type="button" class="rule-delete" title="Delete Rule"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <button type="button" class="rule-add-btn" data-rule-type="common">
+                    <i class="fas fa-plus"></i> Add Rule
+                </button>
+            </div>
+        </div>
+
+        <!-- =======================
+             TAB: ADVERSARY RULES
+             ======================= -->
+        <div class="tab" data-tab="adversary">
+            <div class="config-card">
+                <h3><i class="fas fa-dragon"></i> Adversary Rules</h3>
+                <span class="hint" style="margin-bottom: 10px; display: block;">
+                    Rules sent to the AI only when the GM rolls for adversaries.
+                </span>
+
+                <div class="rules-list" data-rule-type="adversary">
+                    {{#each adversaryRules}}
+                    <div class="rule-row" data-rule-id="{{this.id}}">
+                        <input type="text" class="rule-text" name="ruleText" value="{{this.text}}" maxlength="1200" placeholder="Describe an adversary rule for the AI...">
+                        <button type="button" class="rule-delete" title="Delete Rule"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <button type="button" class="rule-add-btn" data-rule-type="adversary">
+                    <i class="fas fa-plus"></i> Add Rule
+                </button>
+            </div>
+        </div>
+
+        <!-- =======================
+             TAB: USER RULES
+             ======================= -->
+        <div class="tab" data-tab="character">
+            <div class="config-card">
+                <h3><i class="fas fa-hat-wizard"></i> User Rules</h3>
+                <span class="hint" style="margin-bottom: 10px; display: block;">
+                    Rules sent to the AI for specific players or all non-GM users.
+                </span>
+
+                <div class="rules-list" data-rule-type="character">
+                    {{#each characterRules}}
+                    <div class="rule-row" data-rule-id="{{this.id}}">
+                        <select class="rule-user" name="ruleUser">
+                            <option value="all" {{#if (eq this.userId "all")}}selected{{/if}}>All</option>
+                            {{#each ../nonGMUsers}}
+                            <option value="{{this.id}}" {{#if (eq this.id ../this.userId)}}selected{{/if}}>{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                        <input type="text" class="rule-text" name="ruleText" value="{{this.text}}" maxlength="1200" placeholder="Describe a character rule for the AI...">
+                        <button type="button" class="rule-delete" title="Delete Rule"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <button type="button" class="rule-add-btn" data-rule-type="character">
+                    <i class="fas fa-plus"></i> Add Rule
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="sheet-footer flexrow">
+        <button type="submit" name="submit">
+            <i class="far fa-save"></i> Save Configuration
+        </button>
+    </footer>
+</div>
